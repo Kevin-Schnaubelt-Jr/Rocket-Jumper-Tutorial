@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
+    AudioSource audioSource;
     [SerializeField] float mainBoosters = 500f;
     [SerializeField] float rotationalBoosters = 200f;
 
@@ -13,6 +14,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints =  RigidbodyConstraints.FreezePositionZ;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,15 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             Debug.Log("THRUSTERS!");
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
             rb.AddRelativeForce(Vector3.up * mainBoosters * Time.deltaTime);
+        }
+        else
+        {
+            audioSource.Stop();
         }
     }
 

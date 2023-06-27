@@ -565,12 +565,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 8154469096470387624, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
-      propertyPath: m_Drag
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8154469096470387624, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
-      propertyPath: m_Constraints
+    - target: {fileID: 7250043467807517861, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: fbee20603a85fbb44a6778c4e0e6b4a4, type: 3}
+    - target: {fileID: 7250043467807517861, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9209026762158029568, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
