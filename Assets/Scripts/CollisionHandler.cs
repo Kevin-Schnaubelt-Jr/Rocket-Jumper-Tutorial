@@ -7,6 +7,9 @@ public class CollisionHandler : MonoBehaviour
     Rigidbody rb;
     AudioSource[] audioSources;
 
+    [SerializeField] float reloadLevelDelay = 5f;
+    [SerializeField] float nextLevelDelay = 3f;
+
     public bool isCrashed = false;
     public bool isInputEnabled = true;
     public bool isColliding = false;
@@ -72,7 +75,7 @@ public class CollisionHandler : MonoBehaviour
 
 
         // Wait 3 seconds before reloading the level.
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(reloadLevelDelay);
         Debug.Log("Reloading level...");
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
@@ -86,7 +89,7 @@ public class CollisionHandler : MonoBehaviour
 
    IEnumerator NextLevel()
    {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(nextLevelDelay);
         Debug.Log($"RIGHT BEFORE THE DROP {isCrashed}");
         if (isCrashed == false)
         {

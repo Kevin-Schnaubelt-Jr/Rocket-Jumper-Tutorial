@@ -678,17 +678,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 7648447552254398411, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
+      propertyPath: crashDelta
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 9209026762158029568, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9209026762158029568, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -1.38
       objectReference: {fileID: 0}
     - target: {fileID: 9209026762158029568, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 9209026762158029568, guid: 4bb42e5f5ec78664988621058e6ba043, type: 3}
       propertyPath: m_LocalPosition.z
