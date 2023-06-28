@@ -7,6 +7,9 @@ public class Movement : MonoBehaviour
     public CollisionHandler collisionHandler;
     Rigidbody rb;
     AudioSource[] audioSources;
+    [SerializeField] ParticleSystem boostUpParticles;
+    [SerializeField] ParticleSystem boostRightParticles;
+    [SerializeField] ParticleSystem boostLeftParticles;
     [SerializeField] float mainBoosters = 500f;
     [SerializeField] float rotationalBoosters = 200f;
     [SerializeField] int crashDelta = 2;
@@ -43,6 +46,11 @@ public class Movement : MonoBehaviour
             ProcessThrust();
             ProcessRotation();
         }
+        else
+        {
+            boostUpParticles.Stop();
+            boostRightParticles.Stop();
+        }
     }
 
     void ProcessThrust()
@@ -53,12 +61,14 @@ public class Movement : MonoBehaviour
             if (!audioSources[0].isPlaying)
             {
                 audioSources[0].Play();
+                boostUpParticles.Play();
             }
             rb.AddRelativeForce(Vector3.up * mainBoosters * Time.deltaTime);
         }
         else
         {
             audioSources[0].Stop();
+            boostUpParticles.Stop();
         }
     }
 
@@ -68,11 +78,24 @@ public class Movement : MonoBehaviour
         {
             // Debug.Log("Going Right!");
             ApplyRotation(Vector3.back);
+            if (!boostRightParticles.isPlaying)
+            {
+                boostRightParticles.Play();
+            }
         }
         else if (Input.GetKey(KeyCode.A))
         {
             // Debug.Log("Going Left!");
             ApplyRotation(Vector3.forward);
+            if (!boostLeftParticles.isPlaying)
+            {
+                boostLeftParticles.Play();
+            }
+        }
+        else
+        {
+            boostLeftParticles.Stop();
+            boostRightParticles.Stop();
         }
     }
 
