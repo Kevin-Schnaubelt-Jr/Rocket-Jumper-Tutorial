@@ -57,19 +57,24 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            // Debug.Log("THRUSTERS!");
-            if (!audioSources[0].isPlaying)
-            {
-                audioSources[0].Play();
-                boostUpParticles.Play();
-            }
-            rb.AddRelativeForce(Vector3.up * mainBoosters * Time.deltaTime);
+            Thrust();
         }
         else
         {
             audioSources[0].Stop();
             boostUpParticles.Stop();
         }
+    }
+
+    private void Thrust()
+    {
+        // Debug.Log("THRUSTERS!");
+        if (!audioSources[0].isPlaying)
+        {
+            audioSources[0].Play();
+            boostUpParticles.Play();
+        }
+        rb.AddRelativeForce(Vector3.up * mainBoosters * Time.deltaTime);
     }
 
     void ProcessRotation()
