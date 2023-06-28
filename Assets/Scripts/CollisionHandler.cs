@@ -10,6 +10,8 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] float reloadLevelDelay = 5f;
     [SerializeField] float nextLevelDelay = 3f;
 
+    [SerializeField] ParticleSystem crashParticles;
+
     public bool isCrashed = false;
     public bool isInputEnabled = true;
     public bool isColliding = false;
@@ -72,6 +74,7 @@ public class CollisionHandler : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
         audioSources[0].Stop();
         audioSources[1].Play();
+        crashParticles.Play();
 
 
         // Wait 3 seconds before reloading the level.
