@@ -94,7 +94,7 @@ public class CollisionHandler : MonoBehaviour
    {
         yield return new WaitForSeconds(nextLevelDelay);
         Debug.Log($"RIGHT BEFORE THE DROP {isCrashed}");
-        if (isCrashed == false)
+        if (isCrashed == false && isColliding == true)
         {
             Debug.Log("Next level...");
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
