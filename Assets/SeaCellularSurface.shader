@@ -2,6 +2,7 @@ Shader "Custom/SeaCellularSurface" {
     Properties {
         _MainTex ("Texture", 2D) = "white" {}
         _NoiseScale ("Noise Scale", Range(1, 100)) = 16
+        _Brightness ("Brightness", Range(0, 2)) = 1 // new brightness property
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
@@ -16,6 +17,7 @@ Shader "Custom/SeaCellularSurface" {
 
         sampler2D _MainTex;
         float _NoiseScale;
+        float _Brightness; // new brightness property
 
         float2 random2(float2 st) {
             st = float2(dot(st, float2(127.1, 311.7)),
@@ -46,6 +48,8 @@ Shader "Custom/SeaCellularSurface" {
             fixed4 c = tex2D(_MainTex, IN.uv_MainTex);
             float noise = cellularnoise(IN.uv_MainTex, _NoiseScale);
             fixed4 finalColor = noise * float4(1, 2, -2, 1) + float4(0.1,0.5,1.5,1);
+
+            finalColor.rgb *= _Brightness; // apply brightness to final color
 
             o.Albedo = finalColor.rgb;
             o.Alpha = c.a;
